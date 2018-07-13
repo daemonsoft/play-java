@@ -3,7 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+#GET     /                           controllers.HomeController.index
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
@@ -17,5 +17,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET 	/controller 				controllers.MyController.index
 GET 	/libtest 					controllers.MyController.jacksonTest
 
-GET 	/v2 						controllers.Assets.at(path="/public/html", file="index.html")
+GET 	/ 							controllers.Assets.at(path="/public/html", file="index.html")
 GET 	/configtest					controllers.ConfigTestController.index
