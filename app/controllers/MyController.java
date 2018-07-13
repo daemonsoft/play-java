@@ -6,6 +6,6 @@ public class MyController extends Controller {
 	
     public Result index() {
     	
-        return ok("test");
+        return ok("Controller test");
     }
 }
