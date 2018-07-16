@@ -19,3 +19,8 @@ GET 	/libtest 					controllers.MyController.jacksonTest
 
 GET 	/ 							controllers.Assets.at(path="/public/html", file="index.html")
 GET 	/configtest					controllers.ConfigTestController.index
+
+GET     /ok                         controllers.ActionsController.anOkReturn
+GET     /noauth                     controllers.ActionsController.aNotAuthorizedReturn
+GET     /error                      controllers.ActionsController.anInternalServerErrorReturn
+GET     /pdf                        controllers.ActionsController.aPdfFileReturn
