@@ -43,3 +43,5 @@ GET     /cookies                    controllers.RoutesController.cookies
 GET     /customresponse             controllers.ResultsController.customResponse
 GET     /composedaction             controllers.ResultsController.composedAction
 
+GET     /future                     controllers.ResultsController.future
+
