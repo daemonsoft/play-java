@@ -16,7 +16,7 @@ public class MyController extends Controller {
         ObjectMapper mapper = new ObjectMapper();
         User user = new User();
         user.setName("Jackson");
-        user.setLastname("Generate");
+        user.setLastname("Generated");
         return ok(mapper.writeValueAsString(user));
     }
 }

@@ -37,3 +37,5 @@ DELETE  /delete                     controllers.RoutesController.delete
 
 GET     /path/:name                 controllers.RoutesController.path(name: String)
 GET     /path                       controllers.RoutesController.query(name: String)
+GET     /headers                    controllers.RoutesController.headers
+GET     /cookies                    controllers.RoutesController.cookies
