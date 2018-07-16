@@ -15,7 +15,7 @@ public class AuthAction extends Action.Simple {
     @Override
     public CompletionStage<Result> call(Http.Context ctx) {
         if (ctx._requestHeader().headers().get(TOKEN).isEmpty()) {
-            return CompletableFuture.completedFuture(Results.forbidden());
+            return CompletableFuture.completedFuture(Results.forbidden("Not authorized").as("text/html"));
         }
         return delegate.call(ctx);
     }
