@@ -31,6 +31,11 @@ public class ActionsController extends Controller {
     public Result aPdfFileReturn() {
 
         File file = new File("public/pdfs/sample.pdf");
+
+        if(!file.exists() || !file.canRead()){
+            return badRequest("Can´t read the file");
+        }
+
         Path path = file.toPath();
         Source<ByteString, ?> source = FileIO.fromPath(path);
         Optional<Long> contentLength = Optional.of(file.length());

@@ -24,3 +24,13 @@ GET     /ok                         controllers.ActionsController.anOkReturn
 GET     /noauth                     controllers.ActionsController.aNotAuthorizedReturn
 GET     /error                      controllers.ActionsController.anInternalServerErrorReturn
 GET     /pdf                        controllers.ActionsController.aPdfFileReturn
+
+GET     /get                        controllers.RoutesController.get
++ nocsrf
+POST    /post                       controllers.RoutesController.post
++ nocsrf
+PUT     /put                        controllers.RoutesController.put
++ nocsrf
+PATCH   /patch                      controllers.RoutesController.patch
++ nocsrf
+DELETE  /delete                     controllers.RoutesController.delete
