@@ -39,3 +39,6 @@ GET     /path/:name                 controllers.RoutesController.path(name: Stri
 GET     /path                       controllers.RoutesController.query(name: String)
 GET     /headers                    controllers.RoutesController.headers
 GET     /cookies                    controllers.RoutesController.cookies
+
+GET     /customresponse             controllers.ResultsController.customResponse
+
