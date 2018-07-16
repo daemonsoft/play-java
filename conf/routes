@@ -34,3 +34,6 @@ PUT     /put                        controllers.RoutesController.put
 PATCH   /patch                      controllers.RoutesController.patch
 + nocsrf
 DELETE  /delete                     controllers.RoutesController.delete
+
+GET     /path/:name                 controllers.RoutesController.path(name: String)
+GET     /path                       controllers.RoutesController.query(name: String)

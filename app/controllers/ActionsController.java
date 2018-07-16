@@ -33,7 +33,7 @@ public class ActionsController extends Controller {
         File file = new File("public/pdfs/sample.pdf");
 
         if(!file.exists() || !file.canRead()){
-            return badRequest("Can´t read the file");
+            return badRequest("Can´t read the file").as("text/html");
         }
 
         Path path = file.toPath();
