@@ -25,6 +25,6 @@ public class ResultsController extends Controller {
 
     @With(AuthAction.class)
     public Result composedAction() {
-        return ok("Token exists").as("text/html");
+        return ok("Composed action token: " + request().getHeaders().get(AuthAction.TOKEN).get()).as("text/html");
     }
 }
