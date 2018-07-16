@@ -1,8 +1,10 @@
 package controllers;
 
+import actions.AuthAction;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import play.mvc.With;
 
 public class ResultsController extends Controller {
 
@@ -18,6 +20,11 @@ public class ResultsController extends Controller {
                         .build()
         );
 
-        return ok();
+        return ok("Response with custom header and cookie").as("text/html");
+    }
+
+    @With(AuthAction.class)
+    public Result composedAction() {
+        return ok("Token exists").as("text/html");
     }
 }
