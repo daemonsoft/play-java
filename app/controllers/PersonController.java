@@ -17,8 +17,8 @@ public class PersonController extends Controller {
         this.personService = personService;
     }
 
-    public Result all() {
-        return ok(Json.prettyPrint(Json.toJson(personService.all())));
+    public CompletionStage<Result> all() {
+        return personService.all().thenApply(personList -> ok(Json.prettyPrint(Json.toJson(personList))));
     }
 
     public CompletionStage<Result> allBlocking() {
