@@ -40,20 +40,23 @@ public class ResultsController extends Controller {
 
     @With(AuthAction.class)
     public Result composedAction() {
-        return ok("Composed action token: " + request().getHeaders().get(AuthAction.TOKEN).get()).as("text/html");
+        if (request().getHeaders().get(AuthAction.TOKEN).isPresent()) {
+            return ok("Composed action token: " + request().getHeaders().get(AuthAction.TOKEN).get()).as("text/html");
+        }
+        return internalServerError();
     }
 
-    public Result future() {
 
-        return ok();
+    public CompletionStage<Result> future() {
+        return getMessageFromFuture().thenApplyAsync(string -> ok("rendered after " + string));
     }
 
     private CompletionStage<String> getMessageFromFuture() {
         long start = System.currentTimeMillis();
         return futures.delayed(() -> CompletableFuture.supplyAsync(() -> {
             long end = System.currentTimeMillis();
-            long seconds = end - start;
-            return "rendered after " + seconds + " seconds";
-        }), Duration.of(3, SECONDS));
+            long milliseconds = end - start;
+            return milliseconds + " milliseconds";
+        }), Duration.of(1, SECONDS));
     }
 }
