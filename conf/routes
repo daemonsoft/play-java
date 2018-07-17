@@ -45,3 +45,4 @@ GET     /composedaction             controllers.ResultsController.composedAction
 
 GET     /future                     controllers.ResultsController.future
 
+GET     /person                     controllers.PersonController.all

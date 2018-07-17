@@ -1,11 +1,11 @@
 package models;
 
-public class User {
+public class Person {
 	
 	private String name;
 	private String lastname;
 		
-	public User() {
+	public Person() {
 	}
 	
 	public String getName() {

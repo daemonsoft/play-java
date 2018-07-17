@@ -2,7 +2,7 @@ package controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.User;
+import models.Person;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -14,9 +14,9 @@ public class MyController extends Controller {
 
     public Result jacksonTest() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        User user = new User();
-        user.setName("Jackson");
-        user.setLastname("Generated");
-        return ok(mapper.writeValueAsString(user));
+        Person person = new Person();
+        person.setName("Jackson");
+        person.setLastname("Generated");
+        return ok(mapper.writeValueAsString(person));
     }
 }
