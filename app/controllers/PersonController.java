@@ -6,21 +6,22 @@ import play.mvc.Result;
 import services.PersonService;
 
 import javax.inject.Inject;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ExecutionException;
 
 public class PersonController extends Controller {
-
 
     private PersonService personService;
 
     @Inject
-    PersonController(PersonService personService) {
+    public PersonController(PersonService personService) {
         this.personService = personService;
     }
 
-    public CompletionStage<Result> all() throws ExecutionException, InterruptedException {
-        return CompletableFuture.completedFuture(ok(Json.prettyPrint(Json.toJson(personService.all().get()))));
+    public Result all() {
+        return ok(Json.prettyPrint(Json.toJson(personService.all())));
+    }
+
+    public CompletionStage<Result> allBlocking() {
+        return personService.allBlocking().thenApply(personList -> ok(Json.prettyPrint(Json.toJson(personList))));
     }
 }

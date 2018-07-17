@@ -46,3 +46,4 @@ GET     /composedaction             controllers.ResultsController.composedAction
 GET     /future                     controllers.ResultsController.future
 
 GET     /person                     controllers.PersonController.all
+GET     /person/block               controllers.PersonController.allBlocking
