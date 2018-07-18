@@ -1,8 +1,8 @@
 package services;
 
 
-import data.PlayDatabase;
 import models.Person;
+import models.PersonRepository;
 import play.libs.concurrent.Futures;
 
 import javax.inject.Inject;
@@ -18,10 +18,10 @@ public class PersonService {
 
     private List<Person> personList;
     private final Futures futures;
-    private PlayDatabase playDatabase;
+    private PersonRepository playDatabase;
 
     @Inject
-    public PersonService(Futures futures, PlayDatabase playDatabase) {
+    public PersonService(Futures futures, PersonRepository playDatabase) {
         this.futures = futures;
         this.playDatabase = playDatabase;
 
@@ -32,7 +32,7 @@ public class PersonService {
             person.setName("Name " + (i + 1));
             person.setLastname("Lastname " + (i + 1));
             personList.add(person);
-            System.out.println(this.playDatabase.save(person));
+            //System.out.println(this.playDatabase.save(person));
         }
     }
 
