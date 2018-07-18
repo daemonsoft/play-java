@@ -19,3 +19,39 @@ GET 	/libtest 					controllers.MyController.jacksonTest
 
 GET 	/ 							controllers.Assets.at(path="/public/html", file="index.html")
 GET 	/configtest					controllers.ConfigTestController.index
+
+GET     /ok                         controllers.ActionsController.anOkReturn
+GET     /noauth                     controllers.ActionsController.aNotAuthorizedReturn
+GET     /error                      controllers.ActionsController.anInternalServerErrorReturn
+GET     /pdf                        controllers.ActionsController.aPdfFileReturn
+
+GET     /get                        controllers.RoutesController.get
++ nocsrf
+POST    /post                       controllers.RoutesController.post
++ nocsrf
+PUT     /put                        controllers.RoutesController.put
++ nocsrf
+PATCH   /patch                      controllers.RoutesController.patch
++ nocsrf
+DELETE  /delete                     controllers.RoutesController.delete
+
+GET     /path/:name                 controllers.RoutesController.path(name: String)
+GET     /path                       controllers.RoutesController.query(name: String)
+GET     /headers                    controllers.RoutesController.headers
+GET     /cookies                    controllers.RoutesController.cookies
+
+GET     /customresponse             controllers.ResultsController.customResponse
+GET     /composedaction             controllers.ResultsController.composedAction
+
+GET     /future                     controllers.ResultsController.future
+
+GET     /person                     controllers.PersonController.all
+GET     /person/block               controllers.PersonController.allBlocking
++ nocsrf
+POST    /person                     controllers.PersonController.register
++ nocsrf
+POST     /person/block              controllers.PersonController.registerBlocking
+
+GET     /upload                     controllers.UploadController.index
++ nocsrf
+POST     /upload                    controllers.UploadController.upload
