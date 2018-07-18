@@ -38,4 +38,18 @@ public class PersonService {
     public CompletionStage<List<Person>> allBlocking() {
         return futures.delayed(() -> CompletableFuture.supplyAsync(() -> personList), Duration.of(2, SECONDS));
     }
+
+    public CompletionStage<Person> save(Person person) {
+
+        personList.add(person);
+
+        return CompletableFuture.completedFuture(person);
+    }
+
+    public CompletionStage<Person> saveBlocking(Person person) {
+        return futures.delayed(() -> CompletableFuture.supplyAsync(() -> {
+            personList.add(person);
+            return person;
+        }), Duration.of(2, SECONDS));
+    }
 }

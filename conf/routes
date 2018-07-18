@@ -47,3 +47,8 @@ GET     /future                     controllers.ResultsController.future
 
 GET     /person                     controllers.PersonController.all
 GET     /person/block               controllers.PersonController.allBlocking
++ nocsrf
+POST    /person                     controllers.PersonController.register
++ nocsrf
+POST     /person/block               controllers.PersonController.registerBlocking
+
