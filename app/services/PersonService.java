@@ -1,8 +1,8 @@
 package services;
 
 
+import models.IPersonRepository;
 import models.Person;
-import models.PersonRepository;
 import play.libs.concurrent.Futures;
 
 import javax.inject.Inject;
@@ -18,12 +18,12 @@ public class PersonService {
 
     private List<Person> personList;
     private final Futures futures;
-    private PersonRepository playDatabase;
+    private IPersonRepository personRepository;
 
     @Inject
-    public PersonService(Futures futures, PersonRepository playDatabase) {
+    public PersonService(Futures futures, IPersonRepository personRepository) {
         this.futures = futures;
-        this.playDatabase = playDatabase;
+        this.personRepository = personRepository;
 
         personList = new ArrayList<>();
         Person person;
@@ -32,12 +32,11 @@ public class PersonService {
             person.setName("Name " + (i + 1));
             person.setLastname("Lastname " + (i + 1));
             personList.add(person);
-            //System.out.println(this.playDatabase.save(person));
         }
     }
 
     public CompletionStage<List<Person>> all() {
-        return CompletableFuture.completedFuture(personList);
+        return personRepository.list();
     }
 
     public CompletionStage<List<Person>> allBlocking() {
@@ -46,9 +45,7 @@ public class PersonService {
 
     public CompletionStage<Person> save(Person person) {
 
-        personList.add(person);
-
-        return CompletableFuture.completedFuture(person);
+        return personRepository.add(person);
     }
 
     public CompletionStage<Person> saveBlocking(Person person) {

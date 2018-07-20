@@ -10,6 +10,7 @@ crossScalaVersions := Seq("2.11.12", "2.12.4")
 
 libraryDependencies += guice
 libraryDependencies += javaJpa
+libraryDependencies += ehcache
 libraryDependencies += "org.hibernate" % "hibernate-core" % "5.2.17.Final"
 
 // Test Database
