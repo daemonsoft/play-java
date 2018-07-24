@@ -23,13 +23,12 @@ public class PersonController extends Controller {
     }
 
     public CompletionStage<Result> all() {
-        return cache.getOrElseUpdate("personList", this::allPersonFromDb).thenApplyAsync(personList -> ok(Json.toJson(personList)));
+        return cache.getOrElseUpdate("personList", this::allPersonFromDb, 60 * 15).thenApplyAsync(personList -> ok(Json.toJson(personList)));
     }
 
     public CompletionStage<List<Person>> allPersonFromDb() {
         return personService.all();
     }
-
 
     public CompletionStage<Result> allBlocking() {
         return personService.allBlocking().thenApply(personList -> ok(Json.toJson(personList)));
