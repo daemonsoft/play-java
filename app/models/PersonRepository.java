@@ -28,7 +28,7 @@ public class PersonRepository implements IPersonRepository {
 
     @Override
     public CompletionStage<List<Person>> list() {
-        return supplyAsync(() -> wrap(em -> list(em)), executionContext);
+        return supplyAsync(() -> wrap(this::list), executionContext);
     }
 
     private <T> T wrap(Function<EntityManager, T> function) {
@@ -41,7 +41,6 @@ public class PersonRepository implements IPersonRepository {
     }
 
     private List<Person> list(EntityManager em) {
-        List<Person> persons = em.createQuery("select p from Person p", Person.class).getResultList();
-        return persons;
+        return em.createQuery("select p from Person p", Person.class).getResultList();
     }
 }

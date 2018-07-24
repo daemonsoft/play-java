@@ -8,6 +8,8 @@ import java.io.File;
 
 public class UploadController extends Controller {
 
+    public static final String PATH = "c:\\temp";
+
     public Result index() {
         return ok(views.html.upload.render());
     }
@@ -21,7 +23,7 @@ public class UploadController extends Controller {
 
             File file = data.getFile();
 
-            File destination = new File("c:\\temp", fileName);
+            File destination = new File(PATH, fileName);
             boolean fileMove = file.renameTo(destination);
 
             if (!fileMove) {
