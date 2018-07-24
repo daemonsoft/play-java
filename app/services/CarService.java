@@ -9,10 +9,12 @@ import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 
+@Singleton
 public class CarService implements WSBodyReadables, WSBodyWritables {
     private final WSClient ws;
     private String url = "http://localhost:9001/vehicle";
