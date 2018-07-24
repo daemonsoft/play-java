@@ -55,3 +55,9 @@ POST     /person/block              controllers.PersonController.registerBlockin
 GET     /upload                     controllers.UploadController.index
 + nocsrf
 POST     /upload                    controllers.UploadController.upload
+
+GET     /car                        controllers.CarController.index
++ nocsrf
+POST    /car                        controllers.CarController.insert
+
+GET     /hello/:name                controllers.HelloActorController.sayHello(name)
